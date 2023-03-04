@@ -1,0 +1,80 @@
+---
+import ButonBlog from "./Buton-blog.astro";
+import features from "../../config/post.json"
+
+let postPrincipal:any = [];
+
+function postsPrincipals(){
+    return(
+        [...features]
+        .reverse()
+        .slice(0, 5)
+    )
+}
+
+postPrincipal.push(postsPrincipals());
+
+---
+    {
+        postPrincipal[0].map((post:any)=>(
+            <div>
+                <div class="post">
+                    <img src={post.img} alt="image- default">
+                    <div class="content-text__post">
+                        <h3>{post.title}</h3>
+                        <h4>{post.date} / PUBLIC BY {post.autor} </h4>
+                        <p>{post.contentReduce}</p>
+                        <ButonBlog clase="post-button" href={post.href}/>
+                    </div>
+                    
+                </div>
+            </div> 
+        ))
+        
+    }
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    .post{
+        position: relative;
+        padding: 30px 30px 0px 30px;
+        display: flex;
+        gap: 20px;
+        height: 260px;
+        width: 98%;
+        margin: auto;
+        border-bottom: 1px solid white;
+    }
+
+
+    h3{
+        font-size: 27px;
+        font-weight: bold;
+        color: white;
+    }
+
+    p{
+        font-size: 16px;
+        color: white;
+    }
+
+    img{
+        width: 300px;
+        height: 90%;
+        object-fit: cover;
+    }
+
+    h4{
+        color: rgb(255, 255, 255, .5);
+    }
+
+    h3, p, h4 {
+        font-family: 'Roboto', sans-serif;
+    }
+
+
+    
+
+</style>

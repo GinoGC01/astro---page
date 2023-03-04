@@ -1,0 +1,95 @@
+---
+import Posts from "../../config/post.json"
+import ButonBlog from "./Buton-blog.astro";
+
+
+let sidebarPost:any = [];
+
+
+const postFinish = ()=>{
+    let min:any = Posts.length - 6
+    let max:any = Posts.length
+
+    return(
+    [...Posts]
+    .reverse()
+    .slice(min, max)
+    .sort(()=>Math.random()>0.5 ? 1 : -1)
+    )   
+}
+
+sidebarPost.push(postFinish())
+
+console.log(sidebarPost[0]);
+
+---
+
+{
+    sidebarPost[0].map((post:any)=>(  
+    <div class="principal-container__card" id={post.id}>
+                    <div class="content">
+                        <div class="reposted-video__container">
+                            <h4> Reposted by: {post.autor} </h4>
+                            <iframe width="250" height="150" src={post.video} title={post.titleVideo} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="text-content__card">
+                            <h3>{post.title}</h3>
+                            <p>{post.contentReduce}</p>
+                        </div>
+                        <ButonBlog clase="sidebar" href={post.href}/>
+                    </div>
+                </div>
+    ))
+
+}
+
+
+<style>
+         .principal-container__card{
+            width: 100%;
+            height: 380px;
+            padding: 10px 15px;
+            margin-top: 5px;
+         }
+    
+         .content{
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             border: 1px solid white;
+             gap: 5px;
+         }
+         h4{
+             color: rgb(255, 255, 255, .5);
+             font-size: 15px;
+             margin: 5px 0;
+             /* font-weight: bold; */
+         }
+    
+         .text-content__card{
+             padding: 5px 15px;
+             width: 100%;
+             height: 100px;
+             overflow: hidden;
+         }
+    
+         h3{
+             font-size: 19px;
+             font-weight: bold;
+             color: white;
+         }
+    
+         p{
+             color: white;
+             /* height: 100px; */
+             overflow: hidden;
+             white-space: nowrap;
+             text-overflow: ellipsis;
+         }
+    
+         h3, p, h4 {
+             font-family: 'Roboto', sans-serif;
+         }
+    
+     </style>
