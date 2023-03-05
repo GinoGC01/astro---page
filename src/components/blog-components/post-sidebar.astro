@@ -20,25 +20,23 @@ const postFinish = ()=>{
 
 sidebarPost.push(postFinish())
 
-console.log(sidebarPost[0]);
-
 ---
 
 {
     sidebarPost[0].map((post:any)=>(  
     <div class="principal-container__card" id={post.id}>
-                    <div class="content">
-                        <div class="reposted-video__container">
-                            <h4> Reposted by: {post.autor} </h4>
-                            <iframe width="250" height="150" src={post.video} title={post.titleVideo} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                        <div class="text-content__card">
+
+        <div class="content-container">
+                    <p class="posted-by">posted by: {post.autor} </p>
+                    <img src={post.img} alt="post img">
+                    <a href={post.href}>
+                        <div class="title-container">
                             <h3>{post.title}</h3>
                             <p>{post.contentReduce}</p>
-                        </div>
-                        <ButonBlog clase="sidebar" href={post.href}/>
-                    </div>
-                </div>
+                        </div>    
+                    </a>
+        </div>
+    </div>
     ))
 
 }
@@ -47,25 +45,49 @@ console.log(sidebarPost[0]);
 <style>
          .principal-container__card{
             width: 100%;
-            height: 380px;
             padding: 10px 15px;
-            margin-top: 5px;
          }
-    
-         .content{
-             display: flex;
-             flex-direction: column;
-             align-items: center;
-             justify-content: center;
-             border: 1px solid white;
-             gap: 5px;
-         }
-         h4{
-             color: rgb(255, 255, 255, .5);
-             font-size: 15px;
-             margin: 5px 0;
-             /* font-weight: bold; */
-         }
+
+        .content-container{
+            position: relative;
+            height: 250px;
+            margin: 10px 0;
+        }
+
+        img{
+            position: absolute;
+            height: 226px;
+            object-fit: cover;
+        }
+
+        a{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+
+        }
+
+        .posted-by{
+            color: rgb(176, 176, 176) ;
+        }
+        
+        .title-container{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: rgba(0, 0, 0, .8);
+            padding: 15px 10px;
+            transition: all .3s ease-in-out;
+        }
+
+        .title-container:hover{
+            padding: 25px 10px;
+            background-color:rgb(93, 68, 235, .8);
+        }
+        
+        .title-container > h3{
+            text-transform: uppercase;
+        }
     
          .text-content__card{
              padding: 5px 15px;
@@ -82,7 +104,6 @@ console.log(sidebarPost[0]);
     
          p{
              color: white;
-             /* height: 100px; */
              overflow: hidden;
              white-space: nowrap;
              text-overflow: ellipsis;

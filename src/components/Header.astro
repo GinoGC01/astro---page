@@ -8,21 +8,56 @@ contact: string
 const {home, about, contact} = Astro.props
 ---
 
-<header class="flex h-22 w-11/12 mx-auto justify-between">
+<header>
     <div class="px-10 my-5 mx-16">
-        <img class="h-12" src="/public/images/image.png" alt="logo image">
+        <img  src="/public/images/image.png" alt="logo image">
     </div>
-    <nav class="my-auto p-2">
-        <ul class="flex gap-20 px-5 justify-end mx-6">
+    <nav>
+        <ul class="flex gap-20 px-5 justify-end">
             <li><a class="text-slate-100 text-xl" href={home}>Home</a></li>
             <li><a class="text-slate-100 text-xl" href={about}>About</a></li>
-            <li><a class="text-slate-100 text-xl" href={contact}>Contact</a></li>
+            <li><a class="text-slate-100 text-xl" href={about}>Blog</a></li>
         </ul>
     </nav>
+    <a class="text-slate-100 text-l contact" href={contact}>CONTACT</a>
 </header>
 
 <style>
     header{
+        position: absolute;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        height: 100px;
+        width: 91%;
+        left: 4%;
+        justify-content: space-evenly;
         border-bottom: 1px solid white;
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        padding-right: 200px;   
+    }
+
+    img{
+        height: 50px;
+        margin: 7px auto;
+    }
+
+    .contact{
+        margin: auto 0;
+        font-weight: 500;
+        padding: 7px 20px;
+        border-radius: 7px;
+        background-color: rgb(92, 0, 141);
+        transition: all .2s ease-in;
+        margin-right: 90px;
+    }
+
+    .contact:hover{
+        background-color:rgb(93, 68, 235);
     }
 </style>

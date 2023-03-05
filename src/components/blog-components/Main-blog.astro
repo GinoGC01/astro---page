@@ -23,9 +23,21 @@ import PostSidebar from "./post-sidebar.astro";
 </main>
 
 <style>
+
+    main{
+        position: relative;
+        height: 100vh;
+        background-image: linear-gradient(90deg, rgb(0, 0, 0, .5),rgb(0, 0, 0, .6))
+		,url('../../public/images/Vector_2648.jpg');
+	    background-size: cover;
+        
+    }
     .principal-container{
-        margin: 10px auto auto;
-        height: 86vh;
+        position: relative;
+        margin: auto;
+        width: 70%;
+        padding-top: 100px;
+        height: 98%;
         display: grid;
         grid-template-columns: 1fr 20em;
         grid-template-rows: 40px 1fr;
